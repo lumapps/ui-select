@@ -139,6 +139,8 @@
         ctrl.open = true;
         ctrl.activeMatchIndex = -1;
 
+        ctrl.activeIndex = ctrl.activeIndex >= ctrl.items.length ? 0 : ctrl.activeIndex;
+
         // Give it time to appear before focus
         $timeout(function() {
           ctrl.search = initSearchValue || ctrl.search;
@@ -197,6 +199,16 @@
         }
 
       });
+
+      if (ctrl.multiple){
+        //Remove already selected items 
+        $scope.$watchCollection('$select.selected', function(selectedItems){
+          if (!selectedItems) return;
+          var data = ctrl.parserResult.source($scope);
+          var filteredItems = data.filter(function(i) {return selectedItems.indexOf(i) < 0;});
+          setItemsFn(filteredItems);
+        });
+      }
 
     };
 
@@ -422,7 +434,7 @@
         }
       });
 
-      if(~Key.verticalMovement.indexOf(key)){
+      if(~Key.verticalMovement.indexOf(key) && ctrl.items.length > 0){
         _ensureHighlightVisible();
       }
 
