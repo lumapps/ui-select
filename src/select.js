@@ -136,6 +136,29 @@
     ctrl.activate = function(initSearchValue, avoidReset) {
       if (!ctrl.disabled  && !ctrl.open) {
         if(!avoidReset) _resetSearchInput();
+
+        if (ctrl.appendToBody && !ctrl.open) {
+          ctrl.droppedElement = $element.find('.ui-select-match').next();
+
+          ctrl.droppedElement = ctrl.droppedElement
+            .appendTo('body')
+            .outerWidth($element.innerWidth())
+            .css({
+              left: $element.offset().left,
+              top: $element.offset().top + $element.outerHeight()
+            });
+
+          $(window).on('resize', function()
+          {
+            ctrl.droppedElement
+              .outerWidth($element.innerWidth())
+              .css({
+                left: $element.offset().left,
+                top: $element.offset().top + $element.outerHeight()
+              });
+          });
+        }
+
         ctrl.open = true;
         ctrl.activeMatchIndex = -1;
 
@@ -273,6 +296,13 @@
     ctrl.close = function() {
       if (ctrl.open) {
         _resetSearchInput();
+
+        if (ctrl.appendToBody) {
+          ctrl.droppedElement
+            .removeAttr('style')
+            .appendTo($element);
+        }
+
         ctrl.open = false;
         $timeout(function(){
           ctrl.focusser[0].focus();          
@@ -689,6 +719,10 @@
           $select.disabled = attrs.disabled !== undefined ? attrs.disabled : false;
         });
 
+        attrs.$observe('appendToBody', function() {
+          $select.appendToBody = true;
+        });
+
         attrs.$observe('resetSearchInput', function() {
           // $eval() is needed otherwise we get a string instead of a boolean
           var resetSearchInput = scope.$eval(attrs.resetSearchInput);
@@ -730,8 +764,18 @@
             // Firefox 3.6 does not support element.contains()
             // See Node.contains https://developer.mozilla.org/en-US/docs/Web/API/Node.contains
             contains = window.jQuery.contains(element[0], e.target);
+
+            if ($select.appendToBody && $select.droppedElement)
+            {
+              contains = contains || window.jQuery.contains($select.droppedElement[0], e.target);
+            }
           } else {
             contains = element[0].contains(e.target);
+
+            if ($select.appendToBody && $select.droppedElement[0])
+            {
+              contains = contains || $select.droppedElement[0].contains(e.target);
+            }
           }
 
           if (!contains) {
