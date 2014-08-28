@@ -169,6 +169,8 @@
           ctrl.search = initSearchValue || ctrl.search;
           _searchInput[0].focus();
         });
+      } else if (ctrl.open) {
+        ctrl.close();
       }
     };
 
