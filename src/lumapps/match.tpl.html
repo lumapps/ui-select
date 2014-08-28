@@ -1,0 +1,4 @@
+<a class="lum-select-match ui-select-match" ng-class="{ 'lum-select-match--is-default': $select.selected === undefined }" ng-click="$select.activate()">
+    <span ng-hide="$select.selected !==undefined" class="lum-select-match__chosen">{{$select.placeholder}}</span>
+    <span ng-show="$select.selected !==undefined" class="lum-select-match__chosen" ng-transclude></span>
+</a>
