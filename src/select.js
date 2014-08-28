@@ -138,7 +138,7 @@
         if(!avoidReset) _resetSearchInput();
 
         if (ctrl.appendToBody && !ctrl.open) {
-          ctrl.droppedElement = $element.find('.ui-select-match').next();
+          ctrl.droppedElement = $element.find('.ui-select-dropdown');
 
           ctrl.droppedElement = ctrl.droppedElement
             .appendTo('body')
