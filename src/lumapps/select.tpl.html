@@ -1,8 +1,10 @@
-<div class="lum-select" ng-class="{ 'lum-select--is-active lum-select--is-open': $select.open, 'lum-select--is-disabled': $select.disabled, 'lum-select--is-active': $select.focus }">
-    <div class="ui-select-match"></div>
+<div class="lum-select lum-select--unique" ng-class="{ 'lum-select--is-active lum-select--is-open': $select.open, 'lum-select--is-disabled': $select.disabled, 'lum-select--is-active': $select.focus }">
+    <div class="lum-select-input">
+        <div class="ui-select-match"></div>
+    </div>
 
-    <div class="lum-select__dropdown ui-select-dropdown" ng-class="{ 'lum-select__dropdown--is-active': $select.open }">
-        <div class="form-group form-group--left lum-select__search">
+    <div class="lum-select-dropdown ui-select-dropdown" ng-class="{ 'lum-select-dropdown--is-active': $select.open }">
+        <div class="lum-select-dropdown__search form-group form-group--left">
             <input type="text" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" class="form-group__input text-input text-input--m ui-select-search" ng-model="$select.search">
 
             <span class="form-group__add form-group__add--help">
