@@ -330,8 +330,8 @@
           container = _searchInput.parent().parent()[0];
       _searchInput.css('width','10px');
       $timeout(function(){
-        var newWidth = angular.element(container).width() - input.offsetLeft;
-        if(newWidth < 50) newWidth = angular.element(container).width();
+        var newWidth = angular.element(container).find('.ui-select-input').width() - input.offsetLeft;
+        if(newWidth < 50) newWidth = angular.element(container).find('.ui-select-input').width();
         _searchInput.css('width',newWidth+'px');
       });
     };
