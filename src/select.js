@@ -721,8 +721,11 @@
           $select.disabled = attrs.disabled !== undefined ? attrs.disabled : false;
         });
 
-        attrs.$observe('appendToBody', function() {
-          $select.appendToBody = true;
+        attrs.$observe('fezgezgez', function() {
+          if (angular.isDefined(attrs.appendToBody))
+          {
+            $select.appendToBody = true;
+          }
         });
 
         attrs.$observe('resetSearchInput', function() {
