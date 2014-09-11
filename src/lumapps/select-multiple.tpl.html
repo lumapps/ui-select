@@ -1,0 +1,22 @@
+<div class="lum-select lum-select--multi" ng-class="{ 'lum-select--is-active lum-select--is-open': $select.open, 'lum-select--is-disabled': $select.disabled, 'lum-select--is-active': $select.focus }">
+    <div class="lum-select-input ui-select-input">
+        <span class="ui-select-match"></span>
+
+        <input 
+            type="text" 
+            autocomplete="off" 
+            autocorrect="off" 
+            autocapitalize="off" 
+            spellcheck="false" 
+            class="lum-select-input__search ui-select-search" 
+            placeholder="{{ $select.getPlaceholder() }}"
+            ng-disabled="$select.disabled"
+            ng-hide="$select.disabled"
+            ng-model="$select.search"
+            ng-click="$select.activate()">
+    </div>
+
+    <div class="lum-select-dropdown ui-select-dropdown" ng-class="{ 'lum-select-dropdown--is-active': $select.open }">
+        <div class="lum-select-choices ui-select-choices"></div>
+    </div>
+</div>
