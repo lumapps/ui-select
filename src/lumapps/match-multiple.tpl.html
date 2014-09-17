@@ -1,6 +1,6 @@
 <ul class="lum-select-match lum-select-match--multi ui-select-match">
     <li class="lum-select-match__item" ng-repeat="$item in $select.selected" ng-class="{ 'lum-select-match__item--focus': $select.activeMatchIndex === $index }">
-        <span transinject></span>
+        <span uis-transclude-append></span>
         <a class="lum-select-match__close" ng-click="$select.removeChoice($index)" tabindex="-1"></a>
     </li>
 </ul>
