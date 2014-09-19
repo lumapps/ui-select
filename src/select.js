@@ -1,3 +1,5 @@
+/* global $ */
+
 (function () {
   "use strict";
 
