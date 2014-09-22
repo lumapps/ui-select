@@ -395,7 +395,7 @@
 
     ctrl.getPlaceholder = function(){
       //Refactor single?
-      if(ctrl.multiple && ctrl.selected.length) return;
+      if(ctrl.multiple && angular.isDefined(ctrl.selected) && ctrl.selected.length) return;
       return ctrl.placeholder;
     };
 
