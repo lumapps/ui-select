@@ -196,7 +196,7 @@
               top: $element.offset().top + $element.outerHeight()
             });
 
-          $(window).on('resize', function()
+          $(window).on('resize scroll', function()
           {
             ctrl.droppedElement
               .outerWidth($element.innerWidth())
@@ -755,10 +755,7 @@
         });
 
         attrs.$observe('appendToBody', function() {
-          if (angular.isDefined(attrs.appendToBody))
-          {
-            $select.appendToBody = true;
-          }
+          $select.appendToBody = scope.$eval(attrs.appendToBody);
         });
 
         attrs.$observe('resetSearchInput', function() {

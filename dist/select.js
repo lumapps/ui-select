@@ -1,7 +1,7 @@
 /*!
  * ui-select
  * http://github.com/angular-ui/ui-select
- * Version: 0.7.0 - 2014-09-22T12:00:31.913Z
+ * Version: 0.7.0 - 2014-09-23T07:14:31.151Z
  * License: MIT
  */
 
@@ -204,7 +204,7 @@
               top: $element.offset().top + $element.outerHeight()
             });
 
-          $(window).on('resize', function()
+          $(window).on('resize scroll', function()
           {
             ctrl.droppedElement
               .outerWidth($element.innerWidth())
@@ -763,10 +763,7 @@
         });
 
         attrs.$observe('appendToBody', function() {
-          if (angular.isDefined(attrs.appendToBody))
-          {
-            $select.appendToBody = true;
-          }
+          $select.appendToBody = scope.$eval(attrs.appendToBody);
         });
 
         attrs.$observe('resetSearchInput', function() {
