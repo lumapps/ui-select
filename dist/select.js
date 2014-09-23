@@ -1,7 +1,7 @@
 /*!
  * ui-select
  * http://github.com/angular-ui/ui-select
- * Version: 0.7.0 - 2014-09-23T07:38:26.278Z
+ * Version: 0.7.0 - 2014-09-23T09:30:56.826Z
  * License: MIT
  */
 
@@ -417,6 +417,8 @@
         _searchInput.css('width',newWidth+'px');
       }, 0, false);
     };
+
+    $scope.$on('resize_picker', ctrl.sizeSearchInput);
 
     function _handleDropDownSelection(key) {
       var processed = true;

@@ -410,6 +410,8 @@
       }, 0, false);
     };
 
+    $scope.$on('resize_picker', ctrl.sizeSearchInput);
+
     function _handleDropDownSelection(key) {
       var processed = true;
       switch (key) {
