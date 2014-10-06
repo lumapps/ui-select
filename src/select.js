@@ -388,9 +388,16 @@
 
     // Remove item from multiple select
     ctrl.removeChoice = function(index){
-      ctrl.selected.splice(index, 1);
-      ctrl.activeMatchIndex = -1;
-      ctrl.sizeSearchInput();
+      if (ctrl.multiple)
+      {
+        ctrl.selected.splice(index, 1);
+        ctrl.activeMatchIndex = -1;
+        ctrl.sizeSearchInput();
+      }
+      else
+      {
+        ctrl.selected = undefined;
+      }
     };
 
     ctrl.getPlaceholder = function(){
