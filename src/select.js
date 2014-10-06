@@ -161,7 +161,7 @@
     ctrl.disableChoiceExpression = undefined; // Initialized inside uiSelect directive link function
 
     ctrl.isEmpty = function() {
-      return angular.isUndefined(ctrl.selected) || ctrl.selected === null || ctrl.selected === '';
+      return angular.isUndefined(ctrl.selected) || ctrl.selected === null || ctrl.selected.length === 0;
     };
 
     var _searchInput = $element.querySelectorAll('input.ui-select-search');
