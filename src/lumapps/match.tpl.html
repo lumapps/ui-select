@@ -1,4 +1,6 @@
-<a class="lum-select-match lum-select-match--unique ui-select-match" ng-class="{ 'lum-select-match--is-default': $select.selected === undefined }" ng-click="$select.activate()">
-    <span ng-hide="$select.selected !==undefined" class="lum-select-match__selected">{{$select.placeholder}}</span>
-    <span ng-show="$select.selected !==undefined" class="lum-select-match__selected" ng-transclude></span>
+<a class="lum-select-match lum-select-match--unique ui-select-match" ng-class="{ 'lum-select-match--is-default': $select.isEmpty() }" ng-click="$select.activate()">
+    <span ng-hide="!$select.isEmpty()" class="lum-select-match__selected">{{$select.placeholder}}</span>
+
+    <i class="lum-select-match__close" ng-if="!$select.disabled && !$select.isEmpty()" ng-click="$select.removeChoice(0)" tabindex="-1" style="margin-right: 25px; position:relative; z-index: 2; top: -3px;"></i>
+    <span ng-show="!$select.isEmpty()" class="lum-select-match__selected" ng-transclude></span>
 </a>
